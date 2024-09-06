@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="./estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="./assets/img/icono.svg" type="image/x-icon">
+    <title>Carrito Verdulería</title>
+</head>
+<body>
+    <header>
+        <img class="logoCarrito" src="./assets/img/logoCARRITO.png" height="200px"  alt="logo">
+        <div class="barraCarrito">
+            <div id="resumenCarrito">
+                Total Producto: <span id="totalProducto">0</span> | Total Precio: $<span id="totalPrecio">0.00</span>
+            </div>
+            <img class="carritoIcono" id="carritoIcono" src="./assets/img/CARRITO.svg" alt="carrito">
+        </div>
+    </header>
+    <main>
+        <h2></h2>
+        <div class="tarjeta">
+            <img class="producto" src="./assets/img/kiwi.webp" height="150px" alt="kiwi">
+            <div class="info">
+                <h3>Kiwis de Madagascar</h3>
+                <h4>PRODUCTO PREMIUM!</h4>
+                <h5>Precio: $3160 el kilo</h5>
+                <div class="selector">
+                    <button class="restar">-</button>
+                    <span class="muestraCantidad">1</span>
+                    <button class="sumar">+</button>
+                    <button class="agregar-al-carrito" data-precio="3160">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>
+        <div class="tarjeta">
+            <img class="producto" src="./assets/img/naranja.webp" height="150px" alt="naranja">
+            <div class="info">
+                <h3>Naranjas Paraguayas!</h3>
+                <h4>PRODUCTO IMPORTADO</h4>
+                <h5>Precio: $850 el kilo</h5>
+                <div class="selector">
+                    <button class="restar">-</button>
+                    <span class="muestraCantidad">1</span>
+                    <button class="sumar">+</button>
+                    <button class="agregar-al-carrito" data-precio="850">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>
+        <div class="tarjeta">
+            <img class="producto" src="./assets/img/banana.webp" height="150px" alt="banana">
+            <div class="info">
+                <h3>Bananas Ecuador</h3>
+                <h4>LA MEJOR OPCIÓN!</h4>
+                <h5>Precio: $1240 el kilo</h5>
+                <div class="selector">
+                    <button class="restar">-</button>
+                    <span class="muestraCantidad">1</span>
+                    <button class="sumar">+</button>
+                    <button class="agregar-al-carrito" data-precio="1240">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>
+        <div class="tarjeta">
+            <img class="producto" src="./assets/img/cebolla.webp" height="150px" alt="cebolla">
+            <div class="info">
+                <h3>Cebollas</h3>
+                <h4>PRODUCTO PREMIUM!</h4>
+                <h5>Precio: $430 el kilo</h5>
+                <div class="selector">
+                    <button class="restar">-</button>
+                    <span class="muestraCantidad">1</span>
+                    <button class="sumar">+</button>
+                    <button class="agregar-al-carrito" data-precio="430">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>
+        <div class="tarjeta">
+            <img class="producto" src="./assets/img/acelga.webp" height="150px" alt="acelga">
+            <div class="info">
+                <h3>Acelga elegida</h3>
+                <h4>PRODUCTO PREMIUM!</h4>
+                <h5>Precio: $600 el paquete</h5>
+                <div class="selector">
+                    <button class="restar">-</button>
+                    <span class="muestraCantidad">1</span>
+                    <button class="sumar">+</button>
+                    <button class="agregar-al-carrito" data-precio="600">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>
+        <div class="tarjeta">
+            <img class="producto" src="./assets/img/papa.webp" height="150px" alt="papa">
+            <div class="info">
+                <h3>Papa de Balcarce</h3>
+                <h4>PRODUCTO PREMIUM!</h4>
+                <h5>Precio: $1050 el kilo</h5>
+                <div class="selector">
+                    <button class="restar">-</button>
+                    <span class="muestraCantidad">1</span>
+                    <button class="sumar">+</button>
+                    <button class="agregar-al-carrito" data-precio="1050">Agregar al carrito</button>
+                </div>
+            </div>            
+        </div>
+        <div class="tarjeta">
+            <img class="producto" src="./assets/img/canasta1.webp" height="150px" alt="cesta de verduras1">
+            <div class="info">
+                <h3>Cesta de Verduras 1</h3>
+                <h4>LA MEJOR ELECCION!</h4>
+                <h5>Precio: $1800</h5>
+                <div class="selector">
+                    <button class="restar">-</button>
+                    <span class="muestraCantidad">1</span>
+                    <button class="sumar">+</button>
+                    <button class="agregar-al-carrito" data-precio="1800">Agregar al carrito</button>
+                </div>
+            </div>            
+        </div>
+        <div class="tarjeta">
+            <img class="producto" src="./assets/img/canasta2.webp" height="150px" alt="cesta de verduras2">
+            <div class="info">
+                <h3>Cesta de Verduras 2</h3>
+                <h4>LA MEJOR ELECCION!</h4>
+                <h5>Precio: $1500</h5>
+                <div class="selector">
+                    <button class="restar">-</button>
+                    <span class="muestraCantidad">1</span>
+                    <button class="sumar">+</button>
+                    <button class="agregar-al-carrito" data-precio="1500">Agregar al carrito</button>
+                </div>
+            </div>            
+        </div>
+
+    </main>
+
+    <div id="carritoModal" class="modal">
+        <div class="contenidoModal">
+            <span id="cerrarModal" class="btnCierre">&times;</span>
+            <h2>Detalle de tu compra</h2> <br>
+            <div id="carritoContenido"></div>
+            <h4>Total de la compra: $<span id="totalCompra">0.00</span></h4>
+            <div class="btnsFinal">
+                <button id="vaciarCarrito">Vaciar Carrito</button>
+                <button id="procesarPago" class="btnPagar">PAGAR</button>
+            </div>        
+        </div>
+    </div>
+
+    <footer>
+        <h6>Jaime Davalos 284, Santa Rosa de Calamuchita, Córdoba</h6>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
