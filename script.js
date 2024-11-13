@@ -1,6 +1,31 @@
+class ProductoBase {
+    constructor(nombre, precio, imagen, id){
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.imagen = imagen;
+    }
+
+    obtenerPrecio(){
+        return ` $${this.precio.toFixed(2)} `
+    }
+
+    obtenerDetalle(){
+        return {
+            id: this.id,
+            nombre: this.nombre,
+            precio: this.precio,
+            imagen: this.imagen
+        };
+    };
+};
+
+
+
 // Definimos la clase SelectorProducto para manejar la lógica de sumar y restar la cantidad de cada producto
-class SelectorProducto {
-    constructor(btnResta, btnSuma, mostrarCantidad) {
+class SelectorProducto extends ProductoBase {
+    constructor(nombre, precio, imagen, id, btnResta, btnSuma, mostrarCantidad) {
+        super (nombre, precio, imagen, id)
         this.btnResta = btnResta;
         this.btnSuma = btnSuma;
         this.mostrarCantidad = mostrarCantidad;
@@ -21,6 +46,13 @@ class SelectorProducto {
         this.cantidadActual++;
         this.mostrarCantidad.textContent = this.cantidadActual;
     };
+
+    obtenerInfoCarrito(){
+        return {
+            ...this.obtenerDetalle(), //usamos el método heredado
+            cantidad: this.cantidadActual
+        }
+    }
 };
 
 // Seleccionar los elementos del DOM relacionados con el carrito y el modal
@@ -42,16 +74,19 @@ function guardarCarritoEnStorage() {
 }
 
 // Función para agregar un producto al carrito
-function agregarAlCarrito(producto, cantidad) {
-    const productoEnCarrito = carrito.find(item => item.id === producto.id);
+function agregarAlCarrito(indice) {
+    const selector = instancias[indice];
+    const infoProducto = selector.obtenerInfoCarrito();
+
+    const productoEnCarrito = carrito.find(item => item.id === infoProducto.id);
 
     if (productoEnCarrito) {
-        productoEnCarrito.cantidad += cantidad;
+        productoEnCarrito.cantidad += infoProducto.cantidad;
     } else {
-        carrito.push({ ...producto, cantidad });
+        carrito.push(infoProducto);
     };
 
-    totalPrecio += producto.precio * cantidad;
+    totalPrecio += infoProducto.precio * infoProducto.cantidad;
     
     guardarCarritoEnStorage();
     actualizarCarrito();
@@ -138,7 +173,23 @@ const mostrarCantidades = document.querySelectorAll(".muestraCantidad");
 
 const instancias = [];
 btnRestas.forEach((btnResta, indice) => {
-    const selector = new SelectorProducto(btnResta, btnSumas[indice], mostrarCantidades[indice]);
+    const tarjeta = btnResta.closest('.tarjeta'); //obtengo tarjeta del prod
+
+    //obtengo datos del prod
+    const nombre = tarjeta.querySelector('h3').textContent;
+    const precio = parseFloat(tarjeta.querySelector('h5').textContent.replace('Precio: $', ''));
+    const imagen = tarjeta.querySelector('.producto').src;
+    
+    // instancia cn todos los parámetros
+    const selector = new SelectorProducto(
+        nombre,
+        precio,
+        imagen,
+        indice,
+        btnResta,
+        btnSumas[indice],
+        mostrarCantidades[indice]);
+
     instancias.push(selector);
 });
 
@@ -147,18 +198,7 @@ const botonesAgregar = document.querySelectorAll('.agregar-al-carrito');
 
 botonesAgregar.forEach((boton, index) => {
     boton.addEventListener('click', () => {
-        const tarjeta = boton.closest('.tarjeta');
-        
-        const producto = {
-            id: index,
-            nombre: tarjeta.querySelector('h3').textContent,
-            precio: parseFloat(tarjeta.querySelector('h5').textContent.replace('Precio: $', '')),
-            imagen: tarjeta.querySelector('.producto').src            
-        };
-        
-        const cantidad = parseInt(tarjeta.querySelector('.muestraCantidad').textContent);
-        
-        agregarAlCarrito(producto, cantidad);
+        agregarAlCarrito(index);
     });
 });
 
