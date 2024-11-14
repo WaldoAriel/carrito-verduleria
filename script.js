@@ -1,3 +1,5 @@
+//Verduleros: Ivan Nieva, Juan Ordoñez, Waldo Fernández
+
 class ProductoBase {
     constructor(nombre, precio, imagen, id){
         this.id = id;
@@ -142,7 +144,6 @@ function eliminarDelCarrito(productoId) {
     const index = carrito.findIndex(item => item.id === productoId);
     if (index !== -1) {
         const item = carrito[index];
-        console.log(carrito)
         totalPrecio -= item.precio * item.cantidad;
         carrito.splice(index, 1);
         guardarCarritoEnStorage();
@@ -150,6 +151,7 @@ function eliminarDelCarrito(productoId) {
     };
 };
 
+ 
 // Agregar un escuchador al div del carrito para que abra cuando se hace click
 const carritoIcono = document.getElementById('barraCarrito');
 
