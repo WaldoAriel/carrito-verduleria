@@ -142,6 +142,7 @@ function eliminarDelCarrito(productoId) {
     const index = carrito.findIndex(item => item.id === productoId);
     if (index !== -1) {
         const item = carrito[index];
+        console.log(carrito)
         totalPrecio -= item.precio * item.cantidad;
         carrito.splice(index, 1);
         guardarCarritoEnStorage();
