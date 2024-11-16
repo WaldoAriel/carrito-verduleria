@@ -346,4 +346,8 @@ footer, p  {
           margin-right: 10px;
           margin-bottom: 10px;
   }
+  footer, p  {
+    padding: 6px;
+    font-size: smaller;
+  }
 }
