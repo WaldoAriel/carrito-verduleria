@@ -349,5 +349,6 @@ footer, p  {
   footer, p  {
     padding: 6px;
     font-size: smaller;
+    text-align: center;
   }
 }
