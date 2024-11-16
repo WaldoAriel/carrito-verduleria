@@ -125,6 +125,7 @@ function actualizarCarrito() {
     const botonesEliminar = carritoContenido.querySelectorAll('.eliminar-item');
     botonesEliminar.forEach(boton => {
         boton.addEventListener('click', (e) => {
+            e.stopPropagation(); // para frenar la propagación del click
             const productoId = parseInt(e.target.dataset.id);
             eliminarDelCarrito(productoId);
         });
@@ -223,6 +224,13 @@ function simularPago() {
 
 // Evento de click al botón de cerrar el modal
 cerrarModalBtn.addEventListener('click', cerrarCarritoModal);
+
+// Evento para cerrar el modal dando click fuera del modal
+carritoModal.addEventListener('click', (event) => {
+    if (!event.target.closest('.contenidoModal')) {
+        cerrarCarritoModal();
+    }
+});
 
 // Evento de click al botón de vaciar el carrito
 const vaciarCarritoBtn = document.getElementById('vaciarCarrito');
