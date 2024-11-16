@@ -190,7 +190,7 @@ footer {
   position: relative;
   background-color: rgb(0, 100, 75);
   color: white;
-  height: 80px;
+  height: auto;
   width: 100%;
   z-index: 2;
   bottom: 0;
@@ -201,8 +201,9 @@ footer {
   padding: 12px;
 }
 
-footer, h5 {
+footer, p  {
   padding: 6px;
+  font-size: small;
 }
 
 .btnsFinal{
